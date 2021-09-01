@@ -140,6 +140,8 @@ async function handleTree(
  * @param {String} repo
  * @param {String} branch
  * @param {String} url
+ * @param filePath
+ * @param options
  */
 export async function downloadFile(
     username: string,

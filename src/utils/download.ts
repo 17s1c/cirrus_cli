@@ -1,12 +1,13 @@
 import { mkdirsSync, generateFileFromTpl, rename } from './utils'
 import Request from './request'
 import * as path from 'path'
+import * as _ from 'lodash'
 import * as ProgressBar from 'progress'
 import * as logSymbols from 'log-symbols'
 import chalk from 'chalk'
-import ora from 'ora'
+import ora, { Ora } from 'ora'
 import { Options } from '../actions/action.input'
-let spinner: any = null // loading animate
+let spinner: Ora // loading animate
 let bar: any = null // loading bar
 interface Tree {
     path: string
@@ -33,11 +34,12 @@ export async function requestUrl(
     options: Options,
 ) {
     // request start
-    spinner = ora('download start!').start()
-    spinner.color = 'yellow'
-    spinner.text = 'loading...'
+    spinner = ora({
+        text: 'download start!',
+        spinner: 'dots',
+    }).start()
+    spinner.text = chalk.yellow('loading...')
     const url = `https://api.github.com/repos/${username}/${repo}/git/trees/${branch}?recursive=1`
-
     try {
         const res = await Request({ url, method: 'get' })
         const data = res.data
@@ -51,9 +53,10 @@ export async function requestUrl(
             filePath,
             options,
         )
+        spinner.succeed(chalk.green('download success'))
         return res
     } catch (err) {
-        spinner.stop()
+        spinner.fail(chalk.red('download fail'))
     }
 }
 
@@ -151,13 +154,9 @@ export async function downloadFile(
     filePath: string,
     options: Options,
 ) {
-    // rename
-    const exportUrl = rename(url, filePath)
+    const exportUrl = _.replace(rename(url, filePath), '/backend_app', '')
     const dir = path.dirname(exportUrl)
-    // mkdir
     mkdirsSync(dir)
-    // console.log(dir)
-    //download
     try {
         const res = await Request({
             url: `https://raw.githubusercontent.com/${username}/${repo}/${branch}/${url}`,
@@ -180,28 +179,5 @@ export async function downloadFile(
         console.log(err)
         console.log(logSymbols.error, chalk.red(`${url} is error`))
         return
-    }
-}
-
-/**
- * @desc request api get git repo contents
- * @param {String} username
- * @param {String} repo
- * @param {String} branch
- */
-export async function getRepoContent(
-    username: string,
-    repo: string,
-    branch: string,
-): Promise<any> {
-    const url = `https://api.github.com/repos/${username}/${repo}/git/trees/${branch}`
-
-    try {
-        const res = await Request({ url, method: 'get' })
-        const data = res.data
-        const trees = data.tree
-        return trees
-    } catch (err) {
-        // console.log(err)
     }
 }

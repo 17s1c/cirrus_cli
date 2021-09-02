@@ -1,16 +1,16 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "lib": ["es2017","dom"],
-    "module": "commonjs",
-    "target": "es6",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "outDir": "./dist",
-    "baseUrl": "./src",
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true
-  },
-  "exclude": ["node_modules", "e2e", "doc"]
+    "compilerOptions": {
+        "declaration": true,
+        "lib": ["es2017", "dom"],
+        "module": "commonjs",
+        "target": "es6",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "outDir": "./dist",
+        "baseUrl": "./src",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": ["node_modules", "e2e", "doc", "sample"]
 }

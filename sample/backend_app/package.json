@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cirri": "^0.0.1"
+    "cirri": "^0.0.2"
   },
   "devDependencies": {
     "prettier": "^1.18.2",

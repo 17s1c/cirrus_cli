@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cirri": "^0.0.3"
+    "cirri": "^0.0.4",
+    "joi": "14.3.1"
   },
   "devDependencies": {
     "prettier": "^1.18.2",

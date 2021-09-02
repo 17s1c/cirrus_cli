@@ -33,7 +33,6 @@ export async function requestUrl(
     filePath: string,
     options: Options,
 ) {
-    // request start
     spinner = ora({
         text: 'download start!',
         spinner: 'dots',
@@ -53,7 +52,6 @@ export async function requestUrl(
             filePath,
             options,
         )
-        spinner.succeed(chalk.green('download success'))
         return res
     } catch (err) {
         spinner.fail(chalk.red('download fail'))
@@ -169,10 +167,7 @@ export async function downloadFile(
         generateFileFromTpl(tpl, options, exportUrl)
         bar.tick()
         if (bar.complete) {
-            console.log(
-                logSymbols.success,
-                chalk.green(`${repo} all files download!`),
-            )
+            spinner.succeed(chalk.green('download success'))
         }
         return res
     } catch (err) {

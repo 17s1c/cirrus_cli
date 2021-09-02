@@ -6,6 +6,9 @@ export class InitCommand extends AbstractCommand {
         program
             .command('init [name]')
             .alias('i')
+            .description(
+                'Generate backEnd project, example: cirrus init myProject',
+            )
             .action(async (name: string) => {
                 await this.action.handle(name)
             })

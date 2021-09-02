@@ -1,10 +1,11 @@
 {
     "name": "cirrus_cli",
-    "version": "1.0.0",
+    "version": "0.0.5",
     "description": "",
     "main": "index.js",
     "scripts": {
         "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
+        "push": "npm publish",
         "start": "ts-node src/bin/index.ts"
     },
     "bin": {
@@ -26,6 +27,19 @@
         "url": "https://github.com/17s1c/cirrus_cli/issues"
     },
     "homepage": "https://github.com/17s1c/cirrus_cli#readme",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "commander": "^2.20.3",
+        "commitizen": "^3.1.1",
+        "cz-conventional-changelog": "^2.1.0",
+        "handlebars": "^4.7.7",
+        "lodash": "^4.17.21",
+        "log-symbols": "^3.0.0",
+        "nunjucks": "^3.2.3",
+        "ora": "^3.4.0",
+        "progress": "^2.0.3",
+        "standard-version": "^6.0.1"
+    },
     "devDependencies": {
         "@types/commander": "^2.12.2",
         "@types/fs-finder": "^1.8.29",
@@ -38,22 +52,11 @@
         "@types/nunjucks": "^3.1.1",
         "@types/progress": "^2.0.3",
         "@types/qs": "^6.5.3",
-        "axios": "^0.21.1",
-        "commander": "^2.20.3",
-        "commitizen": "^3.1.1",
-        "cz-conventional-changelog": "^2.1.0",
-        "handlebars": "^4.7.7",
-        "jest": "^24.8.0",
-        "lodash": "^4.17.21",
-        "log-symbols": "^3.0.0",
-        "nunjucks": "^3.2.3",
-        "ora": "^3.4.0",
         "prettier": "^1.18.2",
-        "progress": "^2.0.3",
-        "standard-version": "^6.0.1",
         "ts-jest": "^24.0.2",
         "ts-node": "^8.3.0",
         "typedoc": "^0.21.9",
-        "typescript": "^3.5.2"
+        "typescript": "^3.5.2",
+        "jest": "^24.8.0"
     }
 }

@@ -1,8 +1,18 @@
+import chalk from 'chalk'
+import * as logSymbols from 'log-symbols'
+import { runCmd } from '../utils/utils'
 import { AbstractAction } from './abstract.action'
 import { requestUrl } from '../utils/download'
 
 export class InitAction extends AbstractAction {
     public async handle(projectName: string) {
+        if (!projectName) {
+            console.log(
+                logSymbols.error,
+                chalk.red('please input project name!!'),
+            )
+            return
+        }
         let data = {
             username: '17s1c',
             repo: 'cirrus_cli',
@@ -19,5 +29,6 @@ export class InitAction extends AbstractAction {
             data.path as string,
             { projectName },
         )
+        runCmd('yarn', [], `${process.cwd()}/${projectName}`)
     }
 }

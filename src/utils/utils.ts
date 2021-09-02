@@ -1,6 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import * as nunjucks from 'nunjucks'
+const spawn = require('child_process').spawn
 
 var currentPath = process.cwd() //当前目录
 
@@ -49,4 +50,18 @@ export function deleteall(path: string) {
         })
         fs.rmdirSync(path)
     }
+}
+export const runCmd = (command: string, args: never[], destDir: any) => {
+    spawn(
+        command,
+        args,
+        { stdio: 'inherit', cwd: destDir },
+        (error: any, stdout: any, stderr: any): any => {
+            if (error) {
+                console.error(error)
+            } else {
+                console.log('Successful project initialization')
+            }
+        },
+    )
 }

@@ -6,7 +6,7 @@ import { CommandLoader } from '../commands';
 
 const bootstrap = () => {
 	const program: CommanderStatic = commander;
-	program.version(require('../../package.json').version);
+	program.version(require('../../package.json').version, '-v, --version');
 	CommandLoader.load(program);
 	commander.parse(process.argv);
 

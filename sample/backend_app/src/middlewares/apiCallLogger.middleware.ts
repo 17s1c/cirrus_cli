@@ -1,12 +1,8 @@
-import LoggerService from 'cirri/lib/common/logger.service'
-import {
-    IMiddleware,
-    Middleware,
-} from 'cirri/lib/container/middleware.container'
+import { IMiddleware, LoggerService, MiddleInter } from 'cirri/lib'
 import { Request, Response } from 'express'
 import { get } from 'lodash'
 
-@Middleware({ api: ['/home', '/demo'] })
+@MiddleInter({ api: ['/home', '/demo'] })
 export class APICallLoggerMiddleware implements IMiddleware {
     constructor(private readonly loggerService: LoggerService) {}
 

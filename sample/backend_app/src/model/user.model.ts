@@ -1,4 +1,4 @@
-import BaseModel from 'cirri/lib/common/base.model'
+import { BaseModel } from 'cirri/lib'
 import { Column, Entity } from 'typeorm'
 
 @Entity('users')

@@ -1,8 +1,4 @@
-import {
-    Exception,
-    IExceptionFilter,
-} from 'cirri/lib/common/httpException.filter'
-import LoggerService from 'cirri/lib/common/logger.service'
+import { Exception, IExceptionFilter, LoggerService } from 'cirri/lib'
 import { Request, Response, NextFunction } from 'express'
 
 @Exception()

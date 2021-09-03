@@ -1,5 +1,4 @@
-import { Provider } from 'cirri/lib/container/provider.container'
-import { InjectRepository } from 'cirri/lib/container/repository.container'
+import { InjectRepository, Provider } from 'cirri/lib'
 import { Repository } from 'typeorm'
 
 import UserModel from '../model/user.model'

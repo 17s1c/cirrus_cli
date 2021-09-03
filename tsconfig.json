@@ -12,5 +12,7 @@
         "jsx": "react",
         "allowSyntheticDefaultImports": true
     },
+    "compileOnSave": true,
+    "include": ["src"],
     "exclude": ["node_modules", "e2e", "doc", "sample"]
 }

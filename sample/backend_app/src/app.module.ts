@@ -1,4 +1,4 @@
-import { AppModule } from 'cirri/lib/interfaces/config.interface'
+import { AppModule } from 'cirri/lib'
 import Home from './controllers/home'
 import Demo from './controllers/demo'
 import { MyHttpExceptionFilter } from './filters/httpException.filter'

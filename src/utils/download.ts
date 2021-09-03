@@ -167,7 +167,7 @@ export async function downloadFile(
         generateFileFromTpl(tpl, options, exportUrl)
         bar.tick()
         if (bar.complete) {
-            spinner.succeed(chalk.green('download success'))
+            spinner.succeed(chalk.green('all files download success!'))
         }
         return res
     } catch (err) {

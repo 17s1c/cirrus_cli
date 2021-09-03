@@ -13,7 +13,7 @@ export class InitAction extends AbstractAction {
             )
             return
         }
-        let data = {
+        const data = {
             username: '17s1c',
             repo: 'cirrus_cli',
             branch: 'main',
@@ -30,5 +30,6 @@ export class InitAction extends AbstractAction {
             { projectName },
         )
         runCmd('yarn', [], `${process.cwd()}/${projectName}`)
+        console.log(logSymbols.success, chalk.green('install package success'))
     }
 }

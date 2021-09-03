@@ -51,17 +51,23 @@ export function deleteall(path: string) {
         fs.rmdirSync(path)
     }
 }
-export const runCmd = (command: string, args: never[], destDir: any) => {
-    spawn(
-        command,
-        args,
-        { stdio: 'inherit', cwd: destDir },
-        (error: any, stdout: any, stderr: any): any => {
-            if (error) {
-                console.error(error)
-            } else {
-                console.log('Successful project initialization')
-            }
-        },
-    )
+export const runCmd = async (
+    command: string,
+    args: never[],
+    destDir: any,
+): Promise<any> => {
+    return new Promise(function(resolve, reject) {
+        spawn(
+            command,
+            args,
+            { stdio: 'inherit', cwd: destDir },
+            (error: any, stdout: any, stderr: any): any => {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve('Successful project initialization')
+                }
+            },
+        )
+    })
 }

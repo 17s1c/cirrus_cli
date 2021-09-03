@@ -12,6 +12,18 @@ export class InitAction extends AbstractAction {
                 chalk.red('please input project name!!'),
             )
             return
+        } else if (
+            !/^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(
+                projectName,
+            )
+        ) {
+            console.log(
+                logSymbols.error,
+                chalk.red(
+                    "project name violates the pattern: '^(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$' ",
+                ),
+            )
+            return
         }
         const data = {
             username: '17s1c',
@@ -29,7 +41,10 @@ export class InitAction extends AbstractAction {
             data.path as string,
             { projectName },
         )
-        runCmd('yarn', [], `${process.cwd()}/${projectName}`)
-        console.log(logSymbols.success, chalk.green('install package success'))
+        console.log(
+            logSymbols.success,
+            chalk.green('start downloading package'),
+        )
+        await runCmd('yarn', [], `${process.cwd()}/${projectName}`)
     }
 }

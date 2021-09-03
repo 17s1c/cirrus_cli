@@ -1,6 +1,6 @@
 {
     "name": "cirrus_cli",
-    "version": "0.0.8",
+    "version": "0.0.12",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -20,6 +20,10 @@
         "type": "git",
         "url": "git+https://github.com/17s1c/cirrus_cli.git"
     },
+    "files": [
+        "package.json",
+        "dist"
+    ],
     "keywords": [],
     "author": "",
     "license": "ISC",

@@ -4,8 +4,26 @@ import { runCmd } from '../utils/utils'
 import { AbstractAction } from './abstract.action'
 import { requestUrl } from '../utils/download'
 
+interface ActionInPut {
+    port: number
+    mysql_host: string
+    mysql_port: number
+    mysql_username: string
+    mysql_password: string
+    mysql_database: string
+    projectName: string
+}
+
 export class InitAction extends AbstractAction {
-    public async handle(projectName: string) {
+    public async handle({
+        port,
+        mysql_host,
+        mysql_port,
+        mysql_username,
+        mysql_password,
+        mysql_database,
+        projectName,
+    }: ActionInPut) {
         if (!projectName) {
             console.log(
                 logSymbols.error,
@@ -39,7 +57,15 @@ export class InitAction extends AbstractAction {
             data.branch,
             data.download as string,
             data.path as string,
-            { projectName },
+            {
+                projectName,
+                port,
+                mysql_host,
+                mysql_port,
+                mysql_username,
+                mysql_password,
+                mysql_database,
+            },
         )
         console.log(
             logSymbols.success,

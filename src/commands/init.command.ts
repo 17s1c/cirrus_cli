@@ -1,5 +1,7 @@
+const chalk = require('chalk')
 import { CommanderStatic } from 'commander'
 import * as inquirer from 'inquirer'
+import * as logSymbols from 'log-symbols'
 import { AbstractCommand } from './abstract.command'
 
 export class InitCommand extends AbstractCommand {
@@ -11,6 +13,25 @@ export class InitCommand extends AbstractCommand {
                 'Generate backEnd project, example: cirrus init myProject',
             )
             .action(async (projectName: string) => {
+                if (!projectName) {
+                    console.log(
+                        logSymbols.error,
+                        chalk.red('please input project name!!'),
+                    )
+                    return
+                } else if (
+                    !/^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(
+                        projectName,
+                    )
+                ) {
+                    console.log(
+                        logSymbols.error,
+                        chalk.red(
+                            "project name violates the pattern: '^(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$' ",
+                        ),
+                    )
+                    return
+                }
                 inquirer
                     .prompt([
                         {
@@ -19,13 +40,6 @@ export class InitCommand extends AbstractCommand {
                             message: 'port:',
                             default() {
                                 return 8080
-                            },
-                            validate(value: any) {
-                                if (Number.isInteger(value)) {
-                                    return true
-                                }
-
-                                return 'port is integer type'
                             },
                         },
                         {

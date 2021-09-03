@@ -1,6 +1,6 @@
 {
     "name": "cirrus_cli",
-    "version": "0.0.13",
+    "version": "0.0.21",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -22,7 +22,8 @@
     },
     "files": [
         "package.json",
-        "dist"
+        "dist",
+        "yarn.lock"
     ],
     "keywords": [],
     "author": "",
@@ -33,6 +34,7 @@
     "homepage": "https://github.com/17s1c/cirrus_cli#readme",
     "dependencies": {
         "axios": "^0.21.1",
+        "chalk": "^4.1.2",
         "commander": "^2.20.3",
         "commitizen": "^3.1.1",
         "cz-conventional-changelog": "^2.1.0",

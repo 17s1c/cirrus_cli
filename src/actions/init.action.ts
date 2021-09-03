@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+const chalk = require('chalk')
 import * as logSymbols from 'log-symbols'
 import { runCmd } from '../utils/utils'
 import { AbstractAction } from './abstract.action'
@@ -24,25 +24,6 @@ export class InitAction extends AbstractAction {
         mysql_database,
         projectName,
     }: ActionInPut) {
-        if (!projectName) {
-            console.log(
-                logSymbols.error,
-                chalk.red('please input project name!!'),
-            )
-            return
-        } else if (
-            !/^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(
-                projectName,
-            )
-        ) {
-            console.log(
-                logSymbols.error,
-                chalk.red(
-                    "project name violates the pattern: '^(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$' ",
-                ),
-            )
-            return
-        }
         const data = {
             username: '17s1c',
             repo: 'cirrus_cli',

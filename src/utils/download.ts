@@ -4,7 +4,7 @@ import * as path from 'path'
 import * as _ from 'lodash'
 import * as ProgressBar from 'progress'
 import * as logSymbols from 'log-symbols'
-import chalk from 'chalk'
+const chalk = require('chalk')
 import ora, { Ora } from 'ora'
 import { Options } from '../actions/action.input'
 let spinner: Ora // loading animate

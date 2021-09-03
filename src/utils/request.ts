@@ -1,5 +1,5 @@
 import axios from 'axios'
-import chalk from 'chalk'
+const chalk = require('chalk')
 
 const instance = axios.create({
     timeout: 10000,

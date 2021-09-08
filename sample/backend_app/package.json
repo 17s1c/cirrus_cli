@@ -6,13 +6,14 @@
   "scripts": {
     "start": "ts-node src/main.ts",
     "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
-    "format": "prettier --write \"**/*.ts\""
+    "format": "prettier --write \"**/*\""
 
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cirri": "^0.0.7",
+    "cirri": "^0.0.10",
+    "dotenv": "^8.0.0",
     "joi": "14.3.1"
   },
   "devDependencies": {

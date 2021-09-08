@@ -32,72 +32,9 @@ export class InitCommand extends AbstractCommand {
                     )
                     return
                 }
-                inquirer
-                    .prompt([
-                        {
-                            type: 'input',
-                            name: 'port',
-                            message: 'port:',
-                            default() {
-                                return 8080
-                            },
-                        },
-                        {
-                            type: 'input',
-                            name: 'mysql_host',
-                            message: 'mysql host:',
-                            default() {
-                                return 'localhost'
-                            },
-                        },
-                        {
-                            type: 'input',
-                            name: 'mysql_port',
-                            message: 'mysql port:',
-                            default() {
-                                return 3306
-                            },
-                        },
-                        {
-                            type: 'input',
-                            name: 'mysql_username',
-                            message: 'mysql username:',
-                            default() {
-                                return 'root'
-                            },
-                        },
-                        {
-                            type: 'input',
-                            name: 'mysql_password',
-                            message: 'mysql password:',
-                            default() {
-                                return '12345678'
-                            },
-                        },
-                        {
-                            type: 'input',
-                            name: 'mysql_database',
-                            message: 'mysql database:',
-                            default() {
-                                return 'demo'
-                            },
-                        },
-                    ])
-                    .then(
-                        async (answers: {
-                            port: number
-                            mysql_host: string
-                            mysql_port: number
-                            mysql_username: string
-                            mysql_password: string
-                            mysql_database: string
-                        }) => {
-                            await this.action.handle({
-                                ...answers,
-                                projectName,
-                            })
-                        },
-                    )
+                await this.action.handle({
+                    projectName,
+                })
             })
     }
 }

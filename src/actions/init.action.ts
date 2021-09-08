@@ -48,10 +48,8 @@ export class InitAction extends AbstractAction {
                 mysql_database,
             },
         )
-        console.log(
-            logSymbols.success,
-            chalk.green('start downloading package'),
-        )
+        console.log(logSymbols.info, chalk.yellow('start downloading package'))
         await runCmd('yarn', [], `${process.cwd()}/${projectName}`)
+        await runCmd('yarn', ['format'], `${process.cwd()}/${projectName}`)
     }
 }

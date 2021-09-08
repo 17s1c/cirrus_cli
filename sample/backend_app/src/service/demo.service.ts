@@ -1,4 +1,4 @@
-import { InjectRepository, Provider } from 'cirri/lib'
+import { InjectModel, Provider } from 'cirri/lib'
 import { Repository } from 'typeorm'
 
 import UserModel from '../model/user.model'
@@ -11,7 +11,7 @@ export interface IDemoService {
 @Provider()
 export default class DemoService implements IDemoService {
     constructor(
-        @InjectRepository(UserModel)
+        @InjectModel(UserModel)
         private userRepository: Repository<UserModel>,
     ) {}
 

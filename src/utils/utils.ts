@@ -53,7 +53,7 @@ export function deleteall(path: string) {
 }
 export const runCmd = async (
     command: string,
-    args: never[],
+    args: ReadonlyArray<string>,
     destDir: any,
 ): Promise<any> => {
     return new Promise(function(resolve, reject) {

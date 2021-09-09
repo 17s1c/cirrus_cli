@@ -1,25 +1,24 @@
 {
-  "name": "{{ projectName }}",
-  "version": "1.0.0",
-  "description": "",
-  "main": "start.js",
-  "scripts": {
-    "start": "ts-node src/main.ts",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
-    "format": "prettier --write \"**/*\""
-
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cirri": "^0.0.10",
-    "dotenv": "^8.0.0",
-    "joi": "14.3.1"
-  },
-  "devDependencies": {
-    "prettier": "^1.18.2",
-    "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.4"
-  }
+    "name": "{{ projectName }}",
+    "version": "1.0.0",
+    "description": "",
+    "main": "start.js",
+    "scripts": {
+        "start": "nodemon --config ./.cirrus/nodemon.json",
+        "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
+        "format": "prettier --write \"**/*\""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cirri": "^0.0.10",
+        "dotenv": "^8.0.0",
+        "joi": "14.3.1"
+    },
+    "devDependencies": {
+        "prettier": "^1.18.2",
+        "ts-node": "^8.4.1",
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.4"
+    }
 }

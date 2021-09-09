@@ -6,6 +6,7 @@ import { APICallLoggerMiddleware } from './middlewares/apiCallLogger.middleware'
 import UserModel from './model/user.model'
 import { MyValidationPipe } from './pipes/validation.pipe'
 import DemoService from './service/demo.service'
+import { config } from './config/config'
 
 App.init(
     {

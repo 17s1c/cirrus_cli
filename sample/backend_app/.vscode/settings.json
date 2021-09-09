@@ -1,0 +1,18 @@
+{
+    "editor.detectIndentation": false,
+    "editor.fontSize": 13,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "eslint.alwaysShowStatus": false,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/coverage": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "never"
+}

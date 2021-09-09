@@ -2,7 +2,9 @@ node_modules/**
 .vscode/**
 dist/**
 .sh
-
+.prettierignore
+yarn.lock
+.env
 
 .idea/**
 

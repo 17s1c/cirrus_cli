@@ -1,6 +1,6 @@
 const chalk = require('chalk')
+import * as shell from 'shelljs'
 import * as logSymbols from 'log-symbols'
-import { runCmd } from '../utils/utils'
 import { AbstractAction } from './abstract.action'
 import { requestUrl } from '../utils/download'
 
@@ -49,7 +49,9 @@ export class InitAction extends AbstractAction {
             },
         )
         console.log(logSymbols.info, chalk.yellow('start downloading package'))
-        await runCmd('yarn', [], `${process.cwd()}/${projectName}`)
-        await runCmd('yarn', ['format'], `${process.cwd()}/${projectName}`)
+        await shell.exec('yarn', { cwd: `${process.cwd()}/${projectName}` })
+        await shell.exec('yarn format', {
+            cwd: `${process.cwd()}/${projectName}`,
+        })
     }
 }

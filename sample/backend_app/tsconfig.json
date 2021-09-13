@@ -1,3 +1,1 @@
-{
-  "extends": "./.cirrus/tsconfig.cirrus.json"
-}
+{ "extends": "./.cirrus/tsconfig.cirrus.json" }

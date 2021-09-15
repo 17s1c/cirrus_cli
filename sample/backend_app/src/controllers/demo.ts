@@ -7,7 +7,7 @@ import DemoService from '../service/demo.service'
 export default class Demo implements IController {
     constructor(private readonly demoService: DemoService) {}
 
-    async index(data) {
+    async index(data: { name: string; password: number }) {
         // Application.validate(request.body, DemoLoginPostReqDto)
         const schema = {
             name: Joi.string(),

@@ -1,12 +1,13 @@
 {
     "name": "cirrus_cli",
-    "version": "0.0.28",
+    "version": "0.0.29-beta.4",
     "description": "",
     "main": "index.js",
     "scripts": {
         "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
         "start": "ts-node src/bin/index.ts",
         "test": "jest",
+        "format": "prettier --write \"**/*.ts\"",
         "bumpVersion:main": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify",
         "bumpVersion:release": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta",
         "bumpVersion:main:dry": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify --dry-run",
@@ -42,6 +43,7 @@
         "commander": "^2.20.3",
         "commitizen": "^3.1.1",
         "cz-conventional-changelog": "^2.1.0",
+        "dotenv": "^10.0.0",
         "handlebars": "^4.7.7",
         "inquirer": "^8.1.2",
         "lodash": "^4.17.21",
@@ -49,7 +51,8 @@
         "nunjucks": "^3.2.3",
         "ora": "^3.4.0",
         "progress": "^2.0.3",
-        "shelljs": "^0.8.4"
+        "shelljs": "^0.8.4",
+        "ts-morph": "^11.0.3"
     },
     "devDependencies": {
         "@types/commander": "^2.12.2",

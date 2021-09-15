@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.29-beta.4](https://github.com/17s1c/cirrus_cli/compare/v0.0.29-beta.3...v0.0.29-beta.4) (2021-09-15)
+
+
+### Features
+
+* update ([4ef18e4](https://github.com/17s1c/cirrus_cli/commit/4ef18e4e1ae6d7ad07cf5cff4ee67b4d7927f1cc))
+
 ### [0.0.29-beta.3](https://github.com/17s1c/cirrus_cli/compare/v0.0.29-beta.2...v0.0.29-beta.3) (2021-09-15)
 
 

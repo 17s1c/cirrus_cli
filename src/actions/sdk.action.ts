@@ -5,6 +5,11 @@ import { AbstractAction } from './abstract.action'
 import { MethodDeclaration, Project, ScriptTarget, SourceFile } from 'ts-morph'
 import * as path from 'path'
 import * as _ from 'lodash'
+import * as dotenv from 'dotenv'
+const result = dotenv.config()
+if (result.error) {
+    throw result.error
+}
 const chalk = require('chalk')
 let spinner: Ora // loading animate
 
@@ -38,7 +43,9 @@ export const generateWebApi = async ({
     functionDeclaration.setBodyText(writer =>
         writer
             .writeLine(
-                `const response = await axios.post("http://localhost:8080${generateRouterPath(
+                `const response = await axios.post("http://${
+                    process.env.HOST
+                }:${process.env.PORT}${generateRouterPath(
                     className,
                 )}", params)`,
             )

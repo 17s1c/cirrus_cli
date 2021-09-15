@@ -27,7 +27,7 @@ export class InitAction extends AbstractAction {
         const data = {
             username: '17s1c',
             repo: 'cirrus_cli',
-            branch: 'release/deploy-v0.0.29',
+            branch: 'main',
             download: 'sample/backend_app',
             path: projectName,
             repoSource: 0,

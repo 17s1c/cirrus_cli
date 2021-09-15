@@ -39,11 +39,9 @@ export const generateWebApi = async ({
     functionDeclaration.setBodyText(writer =>
         writer
             .writeLine(
-                `const response = await axios.post("http://${
-                    process.env.HOST
-                }:${process.env.PORT}${generateRouterPath(
-                    className,
-                )}", params)`,
+                `const response = await axios.post("${
+                    process.env.SERVICE_URL
+                }${generateRouterPath(className)}", params)`,
             )
             .writeLine('return response?.data'),
     )
@@ -52,16 +50,20 @@ export const generateWebApi = async ({
 
 export class SdkAction extends AbstractAction {
     public async handle() {
+        const result = dotenv.config()
+        if (result.error) {
+            throw result.error
+        }
+        if (!process.env.SERVICE_URL) {
+            spinner.fail(chalk.red('.env file missing "SERVICE_URL" parameter'))
+            return
+        }
         spinner = ora({
             text: 'start generate sdk',
             spinner: 'dots',
         }).start()
         spinner.text = chalk.yellow('loading...')
         try {
-            const result = dotenv.config()
-            if (result.error) {
-                throw result.error
-            }
             const project = new Project({
                 compilerOptions: {
                     outDir: 'dist',

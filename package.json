@@ -7,6 +7,7 @@
         "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc -p tsconfig.json",
         "start": "ts-node src/bin/index.ts",
         "test": "jest",
+        "format": "prettier --write \"**/*.ts\"",
         "bumpVersion:main": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify",
         "bumpVersion:release": "standard-version --commit-all --message 'chore(release): %s\n\n[skip release-ci]' --no-verify --prerelease beta",
         "bumpVersion:main:dry": "standard-version --commit-all --message 'chore(production): %s\n\n[skip main-ci]' --no-verify --dry-run",
@@ -49,7 +50,8 @@
         "nunjucks": "^3.2.3",
         "ora": "^3.4.0",
         "progress": "^2.0.3",
-        "shelljs": "^0.8.4"
+        "shelljs": "^0.8.4",
+        "ts-morph": "^11.0.3"
     },
     "devDependencies": {
         "@types/commander": "^2.12.2",

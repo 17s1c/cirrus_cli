@@ -12,7 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "cirri": "^0.0.11",
+        "cirri": "^0.0.12-beta.2",
         "joi": "14.3.1",
         "rimraf": "^2.6.2"
     },

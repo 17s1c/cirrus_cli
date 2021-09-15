@@ -10,20 +10,12 @@ import { config } from './config/config'
 
 App.init(
     {
-        controllers: [
-            {
-                Api: '/home',
-                Controller: Home,
-            },
-            {
-                Api: '/demo',
-                Controller: Demo,
-            },
-        ],
+        controllers: [Home, Demo],
         validationPipe: MyValidationPipe,
         httpExceptionFilter: MyHttpExceptionFilter,
         middleware: [APICallLoggerMiddleware],
         providers: [DemoService],
+        enableCors: true,
         model: [UserModel],
     },
     config,

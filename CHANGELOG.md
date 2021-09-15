@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.29](https://github.com/17s1c/cirrus_cli/compare/v0.0.28...v0.0.29) (2021-09-15)
+
 ### [0.0.29-beta.4](https://github.com/17s1c/cirrus_cli/compare/v0.0.29-beta.3...v0.0.29-beta.4) (2021-09-15)
 
 

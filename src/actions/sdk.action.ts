@@ -50,6 +50,10 @@ export const generateWebApi = async ({
 
 export class SdkAction extends AbstractAction {
     public async handle() {
+        spinner = ora({
+            text: 'start generate sdk',
+            spinner: 'dots',
+        }).start()
         const result = dotenv.config()
         if (result.error) {
             throw result.error
@@ -58,10 +62,6 @@ export class SdkAction extends AbstractAction {
             spinner.fail(chalk.red('.env file missing "SERVICE_URL" parameter'))
             return
         }
-        spinner = ora({
-            text: 'start generate sdk',
-            spinner: 'dots',
-        }).start()
         spinner.text = chalk.yellow('loading...')
         try {
             const project = new Project({

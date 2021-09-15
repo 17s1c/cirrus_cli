@@ -6,10 +6,6 @@ import { MethodDeclaration, Project, ScriptTarget, SourceFile } from 'ts-morph'
 import * as path from 'path'
 import * as _ from 'lodash'
 import * as dotenv from 'dotenv'
-const result = dotenv.config()
-if (result.error) {
-    throw result.error
-}
 const chalk = require('chalk')
 let spinner: Ora // loading animate
 
@@ -62,6 +58,10 @@ export class SdkAction extends AbstractAction {
         }).start()
         spinner.text = chalk.yellow('loading...')
         try {
+            const result = dotenv.config()
+            if (result.error) {
+                throw result.error
+            }
             const project = new Project({
                 compilerOptions: {
                     outDir: 'dist',

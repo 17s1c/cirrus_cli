@@ -82,6 +82,7 @@ export class SdkAction extends AbstractAction {
                     controllersFile: controllersFile as SourceFile,
                 })
             }
+
             const newProject = new Project()
             const emitOutput = sourceFile.getEmitOutput()
             emitOutput.getEmitSkipped() // returns: boolean

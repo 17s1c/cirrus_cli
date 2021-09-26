@@ -2,7 +2,13 @@ import * as logSymbols from 'log-symbols'
 import ora, { Ora } from 'ora'
 
 import { AbstractAction } from './abstract.action'
-import { MethodDeclaration, Project, ScriptTarget, SourceFile } from 'ts-morph'
+import {
+    ClassDeclaration,
+    MethodDeclaration,
+    Project,
+    ScriptTarget,
+    SourceFile,
+} from 'ts-morph'
 import * as path from 'path'
 import * as _ from 'lodash'
 import * as dotenv from 'dotenv'
@@ -15,27 +21,28 @@ export const generateRouterPath = (name: string): string =>
         .value()
 
 export const generateWebApi = async ({
-    controllersFile,
+    controllerClass,
     sourceFile,
 }: {
-    controllersFile: SourceFile
+    controllerClass: ClassDeclaration
     sourceFile: SourceFile
 }) => {
-    const classDeclaration = controllersFile.getClasses()?.[0]
-    const className = classDeclaration.getName() as string
-    const demoMethod = classDeclaration.getInstanceMethod(
+    const className = controllerClass.getName() as string
+    const indexMethod = controllerClass.getInstanceMethod(
         'index',
     ) as MethodDeclaration
-    const parameter = demoMethod.getParameters()
+    const parameter = indexMethod.getParameters()
     const parameterType = parameter[0].getType()
+    const returnType = indexMethod.getReturnType()
     const functionDeclaration = sourceFile.addFunction({
         name: className,
         isAsync: true,
     })
     functionDeclaration.insertParameter(0, {
         name: 'params',
-        type: parameterType.getText(),
+        type: parameterType.getText(indexMethod),
     })
+    functionDeclaration.setReturnType(returnType.getText(indexMethod))
     functionDeclaration.setBodyText(writer =>
         writer
             .writeLine(
@@ -80,18 +87,23 @@ export class SdkAction extends AbstractAction {
             const sourceFile = project.createSourceFile('./cirrusSdk.ts', '', {
                 overwrite: true,
             })
-            const controllersFiles = _.filter(data, sourceFile => {
-                return sourceFile.getClass(c => {
-                    return c?.getImplements()?.[0]?.getText() === 'IController'
-                })
+            const controllerClassList: ClassDeclaration[] = []
+            _.each(data, sourceFile => {
+                const data = sourceFile.getClass(c => {
+                    const ImpController = _.find(
+                        c?.getImplements(),
+                        imp => imp?.getText() === 'IController',
+                    )
+                    return !_.isEmpty(ImpController)
+                }) as ClassDeclaration
+                if (!_.isEmpty(data)) controllerClassList.push(data)
             })
-            for (const controllersFile of controllersFiles) {
+            for (const controllerClass of controllerClassList) {
                 await generateWebApi({
                     sourceFile,
-                    controllersFile: controllersFile as SourceFile,
+                    controllerClass,
                 })
             }
-
             const newProject = new Project()
             const emitOutput = sourceFile.getEmitOutput()
             emitOutput.getEmitSkipped() // returns: boolean

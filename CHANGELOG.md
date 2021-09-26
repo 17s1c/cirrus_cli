@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.31](https://github.com/17s1c/cirrus_cli/compare/v0.0.30...v0.0.31) (2021-09-26)
+
+
+### Features
+
+* update cirri ([4f7f5b4](https://github.com/17s1c/cirrus_cli/commit/4f7f5b4969e06ccf753de756c61627073dac3a0e))
+
 ### [0.0.30](https://github.com/17s1c/cirrus_cli/compare/v0.0.29...v0.0.30) (2021-09-15)
 
 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.32-beta.0](https://github.com/17s1c/cirrus_cli/compare/v0.0.31...v0.0.32-beta.0) (2021-09-27)
+
+
+### Features
+
+* add deploy command cli ([edad6df](https://github.com/17s1c/cirrus_cli/commit/edad6df60822143c2c0d64b16bf6d77f08f4c513))
+
 ### [0.0.31](https://github.com/17s1c/cirrus_cli/compare/v0.0.30...v0.0.31) (2021-09-26)
 
 
